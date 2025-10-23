@@ -1,32 +1,17 @@
-namespace PalindromeExercise;
+using System.Linq;
 
-public class WordSmith
+namespace PalindromeExercise
 {
-    public bool IsAPalindrome(string word)
+    public class WordSmith
     {
-        if (word == null || word.Length == 0)
+        public bool IsAPalindrome(string word)
         {
-            return false;
+            if (string.IsNullOrEmpty(word)) return false;
+
+            string lowered = word.ToLower();
+            string reversed = new string(lowered.Reverse().ToArray());
+
+            return lowered == reversed;
         }
-
-        string wordLowered = word.ToLower();
-        string backwards = "";
-
-        for (int i = wordLowered.Length - 1; i >= 0; i--)
-        {
-            backwards += wordLowered[i];
-        }
-        
-        return wordLowered == backwards;
-
-        // if (wordLowered == backwards)
-        // {
-        //     return true;
-        // }
-        // else
-        // {
-        //     return false;
-        // }
-
     }
 }
